@@ -370,7 +370,8 @@ export async function handler(
     });
   }
 
-  const post = POSTS.get(pathname);
+  // tip: decode `pathname` to support non-unicode URI.
+  const post = POSTS.get(decodeURIComponent(pathname));
   if (post) {
     return html({
       ...sharedHtmlOptions,
